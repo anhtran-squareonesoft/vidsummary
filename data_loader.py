@@ -52,11 +52,13 @@ class VideoData(Dataset):
                 else:
                     # return torch.Tensor(np.array(f['pool5']))
                     try:
-                        print("GOT FEATURES!!!!!!!!!!!!!!!!!")
+                        print("GOT FEATURES11111111!!!!!!!!!!!!!!!!!")
+                        print(np.array(dataset[key]['video_name']))
                         print(key)
                         return torch.Tensor(np.array(dataset[key]['features']))
                     except Exception:
                         print("FAILED TO GET FEATURES111111111111!!!!!!!!!!!!!!!!!")
+                        print(np.array(dataset[key]['video_name']))
                         print(key)
                         return None
 

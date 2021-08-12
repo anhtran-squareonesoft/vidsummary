@@ -37,7 +37,10 @@ class Generate_Dataset:
             self.video_path = ''
             self.video_list.append(video_path)
 
+        self.video_list.remove("data.h5")
+
         for idx, file_name in enumerate(self.video_list):
+            print(file_name)
             self.dataset['video_{}'.format(idx+1)] = {}
             self.h5_file.create_group('video_{}'.format(idx+1))
 
@@ -123,7 +126,6 @@ class Generate_Dataset:
                     break
 
             video_capture.release()
-
             try:
                 change_points, n_frame_per_seg = self._get_change_points(video_feat, n_frames, fps)
                 self.h5_file['video_{}'.format(video_idx+1)]['features'] = list(video_feat_for_train)
@@ -139,7 +141,8 @@ class Generate_Dataset:
                 print(video_filename)
             except:
                 self.corruptedcount += 1
-                print("VIDEO CORRUPTED!!!!!!!!!!!!")
+                print("VIDEO CORRUPTED11111111!!!!!!!!!!!!")
                 print(self.corruptedcount)
                 print(video_filename)
                 pass
+            
